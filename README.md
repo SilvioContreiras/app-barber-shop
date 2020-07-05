@@ -1,9 +1,9 @@
 # app-barber-shop
 
-**yarn
+**yarn**
 
-**node
+**node**
 
-**Typescript
+**Typescript**
 
-**express
+**express**
