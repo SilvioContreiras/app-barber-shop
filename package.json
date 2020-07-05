@@ -1,0 +1,14 @@
+{
+  "name": "app-barber-shop",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/SilvioContreiras/app-barber-shop.git",
+  "author": "Silvio <silvio.contreiras@trademastersp.com.br>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.6"
+  }
+}
