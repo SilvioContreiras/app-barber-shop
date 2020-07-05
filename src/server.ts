@@ -3,6 +3,9 @@ import routes from './routes';
 
 const app = express();
 
+app.use(express.json());
+app.use(routes);
+
 app.get('/', (req, res) => res.status(200).json({ message: 'Hello TS' }));
 
 app.listen(3333, () => {
