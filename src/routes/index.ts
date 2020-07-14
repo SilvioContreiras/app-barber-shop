@@ -1,16 +1,8 @@
 import { Router } from 'express';
+import appoitmentsRouter from './appoitments.routes';
 
 const routes = Router();
 
-routes.post('/users', (req, res) => {
-  const { name, age } = req.body;
-
-  const user = {
-    name,
-    age,
-  };
-
-  return res.json(user);
-});
+routes.use('/appoitments', appoitmentsRouter);
 
 export default routes;
