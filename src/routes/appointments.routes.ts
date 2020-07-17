@@ -1,13 +1,14 @@
 import { Router } from 'express';
-import { startOfHour, parseISO, isEqual } from 'date-fns';
-import Appoitment from '../models/Appoitments';
+import { startOfHour, parseISO } from 'date-fns';
+import AppoitmentRepo from '../repositories/AppointmentsRepo';
 
 const appoitmentsRouter = Router();
-
-const appoitments: Appoitment[] = [];
+const appointmentRepo = new AppoitmentRepo();
 
 appoitmentsRouter.get('/', (req, res) => {
-  res.status(200).json({ appoitments });
+  const appointments = appointmentRepo.getAll();
+
+  res.status(200).json(appointments);
 });
 
 appoitmentsRouter.post('/', (req, res) => {
@@ -15,17 +16,13 @@ appoitmentsRouter.post('/', (req, res) => {
 
   const parsedDate = startOfHour(parseISO(date));
 
-  const findAppointmentBooked = appoitments.find(appoitment =>
-    isEqual(appoitment.date, parsedDate),
-  );
+  const findAppointmentBooked = appointmentRepo.findByDate(parsedDate);
 
   if (findAppointmentBooked) {
     return res.status(201).json({ message: 'Appoitment already booked' });
   }
 
-  const appoitment = new Appoitment(provider, parsedDate);
-
-  appoitments.push(appoitment);
+  const appoitment = appointmentRepo.create(provider, parsedDate);
 
   return res.status(200).json(appoitment);
 });
