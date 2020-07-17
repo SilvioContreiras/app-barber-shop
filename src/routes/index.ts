@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import appoitmentsRouter from './appoitments.routes';
+import appoitmentsRouter from './appointments.routes';
 
 const routes = Router();
 
