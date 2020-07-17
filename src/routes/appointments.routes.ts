@@ -22,7 +22,10 @@ appoitmentsRouter.post('/', (req, res) => {
     return res.status(201).json({ message: 'Appoitment already booked' });
   }
 
-  const appoitment = appointmentRepo.create(provider, parsedDate);
+  const appoitment = appointmentRepo.create({
+    provider,
+    date: parsedDate,
+  });
 
   return res.status(200).json(appoitment);
 });
